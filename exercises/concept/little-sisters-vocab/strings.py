@@ -1,4 +1,5 @@
 """Functions for creating, transforming, and adding prefixes to strings."""
+import string
 
 
 def add_prefix_un(word):
@@ -7,12 +8,12 @@ def add_prefix_un(word):
     :param word: str - containing the root word.
     :return: str - of root word prepended with 'un'.
     """
-
-    pass
+    return 'un' + word
 
 
 def make_word_groups(vocab_words):
-    """Transform a list containing a prefix and words into a string with the prefix followed by the words with prefix prepended.
+    """Transform a list containing a prefix and words into a string with the prefix
+    followed by the words with prefix prepended.
 
     :param vocab_words: list - of vocabulary words with prefix in first index.
     :return: str - of prefix followed by vocabulary words with
@@ -25,8 +26,11 @@ def make_word_groups(vocab_words):
     For example: list('en', 'close', 'joy', 'lighten'),
     produces the following string: 'en :: enclose :: enjoy :: enlighten'.
     """
-
-    pass
+    prefix = vocab_words[0]
+    result = prefix
+    for word in vocab_words[1:]:
+        result += ' :: ' + prefix + word
+    return result
 
 
 def remove_suffix_ness(word):
@@ -37,8 +41,10 @@ def remove_suffix_ness(word):
 
     For example: "heaviness" becomes "heavy", but "sadness" becomes "sad".
     """
-
-    pass
+    result = word.replace('ness', '')
+    if result[-1] == 'i':
+        return result[0:-1] + 'y'
+    return result
 
 
 def adjective_to_verb(sentence, index):
@@ -50,5 +56,5 @@ def adjective_to_verb(sentence, index):
 
     For example, ("It got dark as the sun set", 2) becomes "darken".
     """
-
-    pass
+    no_punctuation = sentence.translate(str.maketrans('', '', string.punctuation))
+    return no_punctuation.split(' ')[index] + 'en'
