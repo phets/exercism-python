@@ -94,8 +94,7 @@ def separate_appetizers(dishes, appetizers):
     The function should return the list of dish names with appetizer names removed.
     Either list could contain duplicates and may require de-duping.
     """
-
-    pass
+    return list( set(dishes) - set(appetizers) )
 
 
 def singleton_ingredients(dishes, intersection):
@@ -112,5 +111,5 @@ def singleton_ingredients(dishes, intersection):
 
     The function should return a `set` of ingredients that only appear in a single dish.
     """
-
-    pass
+    all_ingredients_set = compile_ingredients(dishes)
+    return all_ingredients_set - intersection
