@@ -7,9 +7,7 @@ def largest(min_factor: int=0, max_factor: int=0) -> tuple:
     :return: tuple of (palindrome, iterable).
              Iterable should contain both factors of the palindrome in an arbitrary order.
     """
-    if min_factor > max_factor:
-        # if the max_factor is less than the min_factor
-        raise ValueError("min must be <= max")
+    validate(min_factor, max_factor)
 
     largest_palindrome = 0
     largest_palindrome_factors = []
@@ -22,7 +20,7 @@ def largest(min_factor: int=0, max_factor: int=0) -> tuple:
                 largest_palindrome = product
                 largest_palindrome_factors = factors
     if not largest_palindrome_factors:
-        return None
+        return (None,[])
     else:
         return (largest_palindrome, largest_palindrome_factors)
 
@@ -36,9 +34,7 @@ def smallest(min_factor, max_factor):
     :return: tuple of (palindrome, iterable).
     Iterable should contain both factors of the palindrome in an arbitrary order.
     """
-    if min_factor > max_factor:
-        # if the max_factor is less than the min_factor
-        raise ValueError("min must be <= max")
+    validate(min_factor, max_factor)
 
     smallest_palindrome =  max_factor ** 2
     smallest_palindrome_factors = []
@@ -51,13 +47,16 @@ def smallest(min_factor, max_factor):
                 smallest_palindrome = product
                 smallest_palindrome_factors = factors
     if not smallest_palindrome_factors:
-        return None
+        return (None,[])
     else:
         return (smallest_palindrome, smallest_palindrome_factors)
 
 
 def is_palindrome(number):
     return str(number) == str(number)[::-1]
+
+def validate(min_factor: int, max_factor: int) -> None:
+    if min_factor < max_factor: raise ValueError("min must be <= max")
 
 def find_factors(number: int, min_factor: int, max_factor: int) -> list:
     output = []
