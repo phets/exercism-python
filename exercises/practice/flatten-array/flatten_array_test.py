@@ -61,6 +61,11 @@ class FlattenArrayTest(unittest.TestCase):
         inputs = [0, 2, [[2, 3], 8, [[100]], None, [[None]]], -2]
         expected = [0, 2, 2, 3, 8, 100, -2]
         self.assertEqual(flatten(inputs), expected)
+    
+    def test_6_level_nest_list_with_null_values_and_string(self):
+        inputs = [0, 2, [[2, 3], 8, [[100]], None, [["gino"]]], -2]
+        expected = [0, 2, 2, 3, 8, 100, "gino", -2]
+        self.assertEqual(flatten(inputs), expected)
 
     def test_all_values_in_nested_list_are_null(self):
         inputs = [None, [[[None]]], None, None, [[None, None], None], None]
