@@ -71,6 +71,12 @@ class PigLatinTest(unittest.TestCase):
     def test_y_as_second_letter_in_two_letter_word(self):
         self.assertEqual(translate("my"), "ymay")
 
+    def test_multiple_x_at_the_beginning_of_a_word(self):
+        self.assertEqual(translate("xxyst"), "ystxxay")     
+    
+    def test_multiple_y_at_the_beginning_of_a_word(self):
+        self.assertEqual(translate("yyyellow"), "ellowyyyay")
+
     def test_a_whole_phrase(self):
         self.assertEqual(translate("quick fast run"), "ickquay astfay unray")
 
