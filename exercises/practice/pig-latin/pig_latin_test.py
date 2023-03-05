@@ -73,7 +73,7 @@ class PigLatinTest(unittest.TestCase):
 
     def test_multiple_x_at_the_beginning_of_a_word(self):
         self.assertEqual(translate("xxyst"), "ystxxay")     
-    
+
     def test_multiple_y_at_the_beginning_of_a_word(self):
         self.assertEqual(translate("yyyellow"), "ellowyyyay")
 
